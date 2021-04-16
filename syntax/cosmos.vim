@@ -1,7 +1,8 @@
 " Language:   COSMOS
 " Maintainer: Tyler Jordan <tsjorda@sandia.gov>
-" URL:        
+" URL:        https://github.com/tsjordan-eng/comsmos.vim
 " LICENSE:    MIT
+" REFERENCE:  https://cosmosc2.com/docs/v4/
 
 if exists('b:current_syntax')
   finish
@@ -10,8 +11,9 @@ endif
 syn case match
 
 " Generic "
-" syn match String /"[^"]*"/ display
-syn region String oneline start=/"/ skip=/\\\\\|\\"/ end=/"/
+syn match cFormat display "%\(\d\+\$\)\=[-+' #0*]*\(\d*\|\*\|\*\d\+\$\)\(\.\(\d*\|\*\|\*\d\+\$\)\)\=\([hlLjzt]\|ll\|hh\)\=\([aAbdiuoxXDOUfFeEgGcCsSpn]\|\[\^\=.[^]]*\]\)" contained
+syn region String oneline start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=cFormat
+hi def link cFormat SpecialChar
 syn match Number /\<\<\d*\.*\d\+\>/ display
 syn match Number /\<\<\(0x\)*\x*\.*\x\+\>/ display
 syntax keyword Type INT UINT FLOAT DERIVED STRING BLOCK
@@ -22,7 +24,6 @@ syn match Comment /^#.*$/ display
 syntax keyword Statement TELEMETRY SELECT_TELEMETRY LIMITS_GROUP LIMITS_GROUP_ITEM
 syntax keyword Keyword ITEM APPEND_ITEM ID_ITEM APPEND_ID_ITEM ARRAY_ITEM APPEND_ARRAY_ITEM SELECT_ITEM DELETE_ITEM META PROCESSOR ALLOW_SHORT HIDDEN
 syntax keyword Function FORMAT_STRING UNITS DESCRIPTION META OVERLAP STATE READ_CONVERSION POLY_READ_CONVERSION SEG_POLY_READ_CONVERSION GENERIC_READ_CONVERSION_START GENERIC_READ_CONVERSION_END LIMITS LIMITS_RESPONSE
-
 
 " Commands "
 syntax keyword Statement COMMAND
