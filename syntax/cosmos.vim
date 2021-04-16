@@ -16,6 +16,7 @@ syn match Number /\<\<\d*\.*\d\+\>/ display
 syn match Number /\<\<\(0x\)*\x*\.*\x\+\>/ display
 syntax keyword Type INT UINT FLOAT DERIVED STRING BLOCK
 syntax keyword Special BIG_ENDIAN LITTLE_ENDIAN
+syn match Comment /^#.*$/ display
 
 " Telemetry "
 syntax keyword Statement TELEMETRY SELECT_TELEMETRY LIMITS_GROUP LIMITS_GROUP_ITEM
