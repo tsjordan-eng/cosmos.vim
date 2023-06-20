@@ -27,6 +27,8 @@ syntax keyword cosmosStatement VARIABLE
 syntax include @RUBY syntax/ruby.vim
 syntax region erbInject matchgroup=Snip keepend start='<%= ' end=' %>' contains=@RUBY
 syntax region erbEval matchgroup=Snip keepend start='<% ' end=' %>' contains=@RUBY
+syntax region conversions  matchgroup=Snip keepend start='^\s*GENERIC_READ_CONVERSION_START\s*$' end='^\s*GENERIC_READ_CONVERSION_END\s*$' contains=@RUBY
+syntax region conversions  matchgroup=Snip keepend start='^\s*GENERIC_WRITE_CONVERSION_START\s*$' end='^\s*GENERIC_WRITE_CONVERSION_END\s*$' contains=@RUBY
 hi link Snip SpecialChar
 
 " Telemetry "
